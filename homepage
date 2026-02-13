@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Story ❤️</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #000;
+    color: #fff;
+    scroll-behavior: smooth;
+}
+
+section {
+    padding: 80px 20px;
+    max-width: 900px;
+    margin: auto;
+}
+
+h1, h2, h3 {
+    text-align: center;
+}
+
+/* Navigation */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0,0,0,0.9);
+    display: none;
+    justify-content: center;
+    gap: 30px;
+    padding: 15px;
+    z-index: 1000;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #ff4d6d;
+}
+
+#openMenuBtn {
+    display: block;
+    margin: 40px auto;
+    padding: 12px 25px;
+    background: white;
+    color: black;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Timeline */
+.timeline {
+    position: relative;
+    margin-top: 50px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    width: 3px;
+    height: 100%;
+    background: white;
+}
+
+.timeline-item {
+    position: relative;
+    width: 50%;
+    padding: 20px;
+}
+
+.timeline-item:nth-child(odd) {
+    left: 0;
+    text-align: right;
+}
+
+.timeline-item:nth-child(even) {
+    left: 50%;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    top: 25px;
+    right: -8px;
+    width: 15px;
+    height: 15px;
+    background: #ff4d6d;
+    border-radius: 50%;
+}
+
+.timeline-item:nth-child(even)::before {
+    left: -8px;
+}
+
+/* Letters */
+.letter-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 20px;
+}
+
+.envelope {
+    position: relative;
+    width: 120px;
+    height: 80px;
+    background: #1a1a1a;
+    border: 2px solid white;
+    cursor: pointer;
+    transition: 0.4s;
+    box-shadow: 0 0 15px rgba(255,255,255,0.1);
+}
+
+/* Envelope flap */
+.envelope::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 60px solid transparent;
+    border-right: 60px solid transparent;
+    border-top: 40px solid white;
+    transform-origin: top;
+    transition: transform 0.4s;
+}
+
+/* Bottom fold lines */
+.envelope::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, transparent 50%, white 50%),
+                linear-gradient(225deg, transparent 50%, white 50%);
+    background-size: 50% 50%;
+    background-repeat: no-repeat;
+    background-position: bottom left, bottom right;
+    opacity: 0.2;
+}
+
+.envelope:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 25px rgba(255,77,109,0.6);
+}
+
+.envelope:hover::before {
+    transform: rotateX(180deg);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal-content {
+    background: #111;
+    padding: 30px;
+    max-width: 600px;
+    border: 2px solid white;
+}
+
+/* Glass Jar */
+.jar-container {
+    text-align: center;
+}
+
+.jar {
+    width: 200px;
+    height: 250px;
+    margin: auto;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.2), rgba(255,255,255,0.05));
+    border-radius: 100px 100px 40px 40px;
+    border: 3px solid rgba(255,255,255,0.6);
+    position: relative;
+    backdrop-filter: blur(5px);
+    cursor: pointer;
+}
+
+.jar::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 40px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 10px;
+}
+
+#dateResult {
+    margin-top: 30px;
+    font-size: 18px;
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fade 2s forwards;
+}
+
+@keyframes fade {
+    to { opacity: 1; }
+}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+    <a href="#home">Start</a>
+    <a href="#letters">Open When</a>
+    <a href="#jar">Date Jar</a>
+    <a href="#end">End</a>
+</nav>
+
+<section id="home">
+    <h1 class="fade-in">Hi love. I made this because I love you more than words.</h1>
+
+    <div class="timeline fade-in">
+        <div class="timeline-item"><h3>2 May</h3><p>You appeared on my screen.</p></div>
+        <div class="timeline-item"><h3>3 May</h3><p>We started talking.</p></div>
+        <div class="timeline-item"><h3>4 May</h3><p>We shared our Instagram accounts.</p></div>
+        <div class="timeline-item"><h3>6 May</h3><p>We talked properly and nonstop.</p></div>
+        <div class="timeline-item"><h3>7 May</h3><p>First video call. First "I love you."</p></div>
+        <div class="timeline-item"><h3>15 May</h3><p>You asked me to be your wife.</p></div>
+        <div class="timeline-item"><h3>Now</h3><p>Still together. Still choosing us.</p></div>
+    </div>
+
+    <div class="fade-in">
+        <h2>Our Story</h2>
+        <p>
+It was the 2nd of May. I don’t know what happened, but I decided to give the dating app one last chance, so I downloaded it again. I was just scrolling when you appeared in front of me. I don’t know what came over me, but I followed you and even wrote you something. That’s how our chat began.
+<br><br>
+After a while of chatting (which, in reality, was just one day), you asked for my Instagram. I had just made a new account, so I gave it to you. I think I told you I didn’t have any pictures, but you didn’t care. I guess you just wanted to know me better. So, we continued talking there.
+<br><br>
+One day, after less than a week, you asked me to call for the first time. I remember that day very clearly—I was sitting on the bus, heading home from work. When you called, I was so nervous. I didn’t know if I should pick up. Would you laugh at my Urdu accent? I’m shy, my Urdu isn’t perfect, I talk fast—would you understand me? But I put all my thoughts aside and accepted the call.
+<br><br>
+Honestly, I don’t remember everything we talked about, but I do remember saying I preferred calls over chats—which is exactly what happened the next day. You told me about your family, about your mom, everything. Two days later, we switched to a video call, and I saw you for the first time. My thoughts were: Shifa, is this real? Damn, he is hot! Handsome. That was the exact moment I fell in love with you. I think we even talked about our feelings that day. I know how you said “I love you” to me for the first time.
+<br><br>
+I wish I had the chats on Instagram, but I deleted them because I was scared someone would see. But it’s all in my heart and brain, and no one can erase it. From that moment, we continued talking on Instagram. Then you asked for my number, and I gave it to you. After a while, you asked me if I wanted to be your wife—and I said yes. You can’t imagine how happy I was. I finally found someone I could talk to easily, someone who sees me as I am, not someone trying to change me. Someone who wants me to be happy. For that, babe, I love you so much.
+<br><br>
+I wanted to tell my parents that I wanted a man who lives in Lahore, who loves me for who I am inside, not for my looks or weight, but for my character. I am so thankful to have you in my life. You are here with me in my worst moments and my happiest ones. I still remember what we planned to name our daughter. Your mother’s name, I think, was Shamsa—just a guess. Even though she isn’t here with you, I’m sure she is happy to see you happy. I never told you this, but I am thankful that she raised a son who is well-mannered and kind-hearted.
+<br><br>
+I love you. I hope we will have a wonderful married life together.
+        </p>
+    </div>
+
+    <button id="openMenuBtn" onclick="openMenu()">Open Menu ❤️</button>
+</section>
+
+<section id="letters">
+    <h2>Open When Letters 💌</h2>
+    <input type="password" id="pw" placeholder="Enter password">
+    <button onclick="checkPw()">Unlock</button>
+    <div class="letter-grid" id="lettersGrid"></div>
+</section>
+
+<section id="jar">
+    <h2>Date Night Jar</h2>
+    <div class="jar-container">
+        <div class="jar" onclick="pickDate()"></div>
+        <div id="dateResult"></div>
+    </div>
+</section>
+
+<section id="end">
+    <h2>You made it…</h2>
+    <p>Every letter, every little piece of my heart.</p>
+    <p>I hope you felt my love in every word.</p>
+    <p>Here’s the best part: the story isn’t over.</p>
+    <p><strong>It’s us. Today, tomorrow, always.</strong></p>
+</section>
+
+<script>
+function openMenu(){
+    document.getElementById('navbar').style.display = 'flex';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function checkPw(){
+    if(document.getElementById('pw').value === '0305love'){
+        const grid = document.getElementById('lettersGrid');
+        grid.innerHTML = '';
+        for(let i=1;i<=27;i++){
+            let div = document.createElement('div');
+            div.className='envelope';
+            div.onclick=()=>alert('Open When Letter '+i);
+            grid.appendChild(div);
+        }
+    } else alert('Wrong password ❤️');
+}
+
+const dates=[
+"Movie Date Night 🎬","Game Night 🎮","Truth or Dare","Deep Talk 🌙","Plan Future Trip ✈️","Virtual Coffee ☕","Watch Series 📺","Build Playlist 🎧","Memory Lane 🕰️","Dream Home 🏡"
+];
+
+function pickDate(){
+    const rand=Math.floor(Math.random()*dates.length);
+    document.getElementById('dateResult').innerText=dates[rand];
+}
+</script>
+
+</body>
+</html>
